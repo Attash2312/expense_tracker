@@ -95,9 +95,9 @@ class _ExpensesState extends State<Expenses> {
     try {
       await FirebaseAuth.instance.signOut();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Signed out successfully!'),
-          duration: const Duration(seconds: 2),
+          duration: Duration(seconds: 2),
         ),
       );
       // Navigate to login screen or home screen after sign out
@@ -129,7 +129,7 @@ class _ExpensesState extends State<Expenses> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: const Duration(seconds: 3),
-        content: Text('Expense Deleted'),
+        content: const Text('Expense Deleted'),
         action: SnackBarAction(
           label: 'Undo',
           onPressed: () {
@@ -151,7 +151,8 @@ class _ExpensesState extends State<Expenses> {
         build: (pw.Context context) {
           return pw.Column(
             children: [
-              pw.Text('Expenses Report', style: pw.TextStyle(fontSize: 30)),
+              pw.Text('Expenses Report',
+                  style: const pw.TextStyle(fontSize: 30)),
               pw.SizedBox(height: 20),
               pw.Table(
                 border: pw.TableBorder.all(),
@@ -179,7 +180,7 @@ class _ExpensesState extends State<Expenses> {
                         pw.Text(expense.category.toString()),
                       ],
                     );
-                  }).toList(),
+                  }),
                   // Total expense row
                   pw.TableRow(
                     children: [

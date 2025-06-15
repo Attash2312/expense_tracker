@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -125,12 +125,12 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: login,
-                child: Text("Login",
-                    style: GoogleFonts.oswald(color: Colors.white)),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   backgroundColor: const Color.fromARGB(255, 29, 1, 34),
                 ),
+                child: Text("Login",
+                    style: GoogleFonts.oswald(color: Colors.white)),
               ),
               const SizedBox(height: 16),
               TextButton(

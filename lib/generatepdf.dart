@@ -7,13 +7,13 @@ import 'package:cloud_firestore/cloud_firestore.dart'; // To fetch user expenses
 class GeneratePDF extends StatelessWidget {
   final String userId;
 
-  GeneratePDF({required this.userId});
+  const GeneratePDF({super.key, required this.userId});
 
   Future<pw.Document> createPDF() async {
     final pdf = pw.Document();
 
     // Fetch user data (name) and expenses from Firestore
-    final user = await FirebaseAuth.instance.currentUser;
+    final user = FirebaseAuth.instance.currentUser;
     final userExpenses = await FirebaseFirestore.instance
         .collection('users')
         .doc(userId)
@@ -68,7 +68,8 @@ class GeneratePDF extends StatelessWidget {
               ),
             ),
             pw.SizedBox(height: 20),
-            pw.Text('List of Expenses:', style: pw.TextStyle(fontSize: 18)),
+            pw.Text('List of Expenses:',
+                style: const pw.TextStyle(fontSize: 18)),
             pw.TableHelper.fromTextArray(
               headers: ['Title', 'Amount', 'Date', 'Category'],
               data: expensesList,
